@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso - Seguro no pagamos</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form id="contacto-form">
+            <!-- Creamos un div para agroupar los input y label-->
+            <div class="grupo-form">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" required 
+                minlength ="2"
+                maxlength="20">
+            </div>
+            <div class="grupo-form">
+                <label for="apellido">Apellido:</label>
+                <input type="text" name="apellido" id="apellido" required 
+                minlength ="2" 
+                maxlength="20">
+            </div>
+            <div class="grupo-form">
+                <label for="dni">DNI:</label>
+                <!-- Pattern: Una expresion regular para permitir cualquier formato de dni -->
+                <!-- ATRIBUTO ONVALID SE PUEDE APLCIAR EN JS. Con este atributo/evento cambiamos el mensaje por defecto del input invalido-->
+                <input type="text" name="dni" id="dni" required 
+                pattern="^[\d]{1,3}\.?[\d]{3,3}\.?[\d]{3,3}$" 
+                oninvalid="this.setCustomValidity('Debeser un dni valido')"
+                oninput="this.setCustomValidity('')"
+                placeholder="99999999">
+            </div>
+            <div class="group-form">
+                <label for="email">Correo Electronico:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="group-form">
+                <label for="telefono">Telefono:</label>
+                <input type="tel" name="telefono" id="telefono" required>
+            </div>
+            <div class="grupo-form">
+                <!-- COmbo Box -->
+                <label for="tipo-seguro">Tipo de Seguro:</label>
+                <select name="tipo-seguro" id="tipo-seguro">
+                    <option value="" disabled selected>Seleccione una Opcion</option>
+                    <option value="basico">Basico</option>
+                    <option value="intermedio">Intermedio</option>
+                    <option value="premium">Premium</option>
+                </select>
+            </div>
+            <div class="grupo-form" id="valor-seguro-container">
+                <p>Valor del seguro:</p>
+                <span id="valor-seguro"></span>
+            </div>
+            <input type="submit" value="Seleccionar Cobertura">
+        </form>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
