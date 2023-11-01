@@ -17,7 +17,7 @@
             <div class="form-container">
                 <div id="spinner-container">
                     <p>Cargando solicitud del formulario...</p>
-                    <div class="spinner-border text-primary">
+                    <div class="spinner-border spinner-border-md text-primary">
                     </div>
                 </div>
                 <form id="form-contact">
@@ -56,22 +56,27 @@
                     <div class="form-group" id="valor-seguro">
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Seleccionar Cobertura">
+                        <input class="btn btn-success" type="submit" value="Seleccionar Cobertura">
                     </div>
                 </form>
             </div>
         </main>
     </div>
-    <div class="modal" id="datos-cargados">
+    <div class="modal fade" id="datos-cargados">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
+                    <h4 class="modal-title">Datos Del Usuario</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
-                <div class="modal-body">
-                    <div class="spinner-border text-primary">
+                <div class="modal-body" id="datos-del-usuario">
+                    <div id="spinner-modal">
+                        <div class="spinner-border text-primary">
+                        </div>
+                    </div>
+                    <div id="datos-contact">
+                        <!-- Se relllena dinamicamente con Js. -->
                     </div>
                 </div>
             </div>

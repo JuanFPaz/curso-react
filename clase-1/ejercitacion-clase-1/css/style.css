@@ -1,72 +1,76 @@
-/*Quitamos los botones que vienen por defecto en el input type number*/
-#dni{
-    appearance: textfield !important;
-    -webkit-appearance: textfield !important;
-    -moz-appearance: textfield !important;
-}
-
-
-.form-container{
-    position: relative;
-    background-color: aliceblue;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-    max-width: 580px;
-    text-align: center;
-}
-#spinner-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* Otros estilos del spinner-container si es necesario */
-}
-#spinner-container p{
-    font-size: 20px;
-}
-#form-contact{
-    visibility: hidden;
-}
-
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
-main{
-    background-color: blue;
+/*Estilos del contenedor main*/
+main {
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 
-.contenedor{
-    background-color: aliceblue;
+/*Estilos del form-container*/
+.form-container {
+    position: relative;
+    background-color: rgb(234, 238, 241);
     padding: 20px;
     border-radius: 8px;
-    width: 100%;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
     max-width: 580px;
     text-align: center;
 }
-
-.form-group{
-    margin: 20px;
+/*Ajustamos al spinner-container en el centro del form-container*/
+#spinner-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#spinner-container p {
+    font-size: 20px;
+}
+/*Ocultamos momentaneamente el form-contact*/
+#form-contact
+{
+    visibility: hidden;
 }
 
+
+/*Estilos de los contenedor del formulario*/
+.form-group {
+    margin: 20px;
+}
 input,
-select{
+select {
     width: 100%;
     padding: 18px;
     border: 1px solid black;
     border-radius: 4px;
 }
 
-#dni{
+/*Quitamos los botones que vienen por defecto en el input type number*/
+#dni {
     appearance: textfield !important;
     -webkit-appearance: textfield !important;
     -moz-appearance: textfield !important;
+}
+
+/*Estilos del del cuerpo del modal*/
+#datos-del-usuario{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+/*Ocutlamos el contenedor datos-contact del modal*/
+#datos-contact{
+    display: none;
+}
+
+.botones-modal{
+    display: flex;
+    justify-content: space-between;
 }
