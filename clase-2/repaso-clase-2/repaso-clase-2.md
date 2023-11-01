@@ -35,6 +35,6 @@ Al finalizar, ya tenemos el entorno para desarrollar con `React.js`
 
 El contenido con el que vamos a trabajar, se encuentra el el directorio `src`:
 
-![Alt text](image-9.png)
+![Alt text](./images/image-9.png)
 
 
