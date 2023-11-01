@@ -5,8 +5,9 @@
     -moz-appearance: textfield !important;
 }
 
-.spinner-container,
+
 .form-container{
+    position: relative;
     background-color: aliceblue;
     padding: 20px;
     border-radius: 8px;
@@ -14,8 +15,18 @@
     max-width: 580px;
     text-align: center;
 }
-.form-container{
-    display: none;
+#spinner-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Otros estilos del spinner-container si es necesario */
+}
+#spinner-container p{
+    font-size: 20px;
+}
+#form-contact{
+    visibility: hidden;
 }
 
 *{
@@ -24,7 +35,7 @@
     padding: 0;
 }
 
-body{
+main{
     background-color: blue;
     display: flex;
     justify-content: center;
@@ -32,10 +43,11 @@ body{
     min-height: 100vh;
 }
 
-.container{
+.contenedor{
     background-color: aliceblue;
     padding: 20px;
     border-radius: 8px;
+    width: 100%;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
     max-width: 580px;
     text-align: center;
@@ -57,8 +69,4 @@ select{
     appearance: textfield !important;
     -webkit-appearance: textfield !important;
     -moz-appearance: textfield !important;
-}
-
-input:invalid{
-    box-shadow: 2px 2px 6px rgba(167, 18, 18, 0.5)
 }

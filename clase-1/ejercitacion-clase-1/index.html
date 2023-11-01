@@ -6,50 +6,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seguro No Pagamos - Solicitud</title>
     <script src="./js/main.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <div class="container">
-        <form id="form-contact">
-            <h1>Solicitud Cobertura Seguro No Pagamos</h1>
-            <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" id="nombre" required placeholder="Jose Manuel" minlength="2" maxlength="20">
+    <div class="container-fluid p-0">
+        <main>
+            <div class="form-container">
+                <div id="spinner-container">
+                    <p>Cargando solicitud del formulario...</p>
+                    <div class="spinner-border text-primary">
+                    </div>
+                </div>
+                <form id="form-contact">
+                    <h1>Solicitud Cobertura Seguro No Pagamos</h1>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" required placeholder="Jose Manuel" minlength="2"
+                            maxlength="20">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Apellido</label>
+                        <input type="text" name="apellido" id="apellido" required placeholder="Garabito" minlength="2"
+                            maxlength="20">
+                    </div>
+                    <div class="form-group">
+                        <label for="dni">DNI</label>
+                        <input type="number" name="dni" id="dni" required placeholder="99999999">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electronico</label>
+                        <input type="email" name="email" id="email" required placeholder="ejemplo@ejemplo.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" name="telefono" id="telefono" required placeholder="119999999">
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo-seguro">Tipo de Seguro:</label>
+                        <select name="tipo-seguro" id="tipo-seguro" required>
+                            <option value="" disabled selected>Seleccione una Opcion</option>
+                            <option value="basico">Básico</option>
+                            <option value="intermedio">Intermedio</option>
+                            <option value="premium">Premium</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="valor-seguro">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Seleccionar Cobertura">
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="">Apellido</label>
-                <input type="text" name="apellido" id="apellido" required placeholder="Garabito" minlength="2" maxlength="20">
-            </div>
-            <div class="form-group">
-                <label for="dni">DNI</label>
-                <input type="number" name="dni" id="dni" required placeholder="99999999">
-            </div>
-            <div class="form-group">
-                <label for="email">Correo Electronico</label>
-                <input type="email" name="email" id="email" required placeholder="ejemplo@ejemplo.com">
-            </div>
-            <div class="form-group">
-                <label for="telefono">Teléfono</label>
-                <input type="tel" name="telefono" id="telefono" required placeholder="119999999">
-            </div>
-            <div class="form-group">
-                <label for="tipo-seguro">Tipo de Seguro:</label>
-                <select name="tipo-seguro" id="tipo-seguro">
-                    <option value="" disabled selected>Seleccione una Opcion</option>
-                    <option value="basico">Básico</option>
-                    <option value="intermedio">Intermedio</option>
-                    <option value="premium">Premium</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <p><strong>Seguro Seleccionado: </strong><span id="valor-seguro"></span></p>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Seleccionar Cobertura">
-            </div>
-        </form>
+        </main>
     </div>
+    <div class="modal" id="datos-cargados">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="spinner-border text-primary">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
