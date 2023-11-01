@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguro No Pagamos - Solicitud</title>
+    <script src="./js/main.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form id="form-contact">
+            <h1>Solicitud Cobertura Seguro No Pagamos</h1>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" required placeholder="Jose Manuel" minlength="2" maxlength="20">
+            </div>
+            <div class="form-group">
+                <label for="">Apellido</label>
+                <input type="text" name="apellido" id="apellido" required placeholder="Garabito" minlength="2" maxlength="20">
+            </div>
+            <div class="form-group">
+                <label for="dni">DNI</label>
+                <input type="number" name="dni" id="dni" required placeholder="99999999">
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electronico</label>
+                <input type="email" name="email" id="email" required placeholder="ejemplo@ejemplo.com">
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" name="telefono" id="telefono" required placeholder="119999999">
+            </div>
+            <div class="form-group">
+                <label for="tipo-seguro">Tipo de Seguro:</label>
+                <select name="tipo-seguro" id="tipo-seguro">
+                    <option value="" disabled selected>Seleccione una Opcion</option>
+                    <option value="basico">Básico</option>
+                    <option value="intermedio">Intermedio</option>
+                    <option value="premium">Premium</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <p><strong>Seguro Seleccionado: </strong><span id="valor-seguro"></span></p>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Seleccionar Cobertura">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
