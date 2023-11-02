@@ -7,12 +7,10 @@ Fuente:[Documentacion oficial React](https://es.react.dev/)
 Vamos a usar [Vite](https://vitejs.dev/) para crear aplicaciones de react.
 
 ## Configurar entorno de desarrollo
-   Para realizar estos pasos hay que tener instalado previamente [Node.js](https://nodejs.org/en).
 
-
+Para realizar estos pasos hay que tener instalado previamente [Node.js](https://nodejs.org/en).
 Para configurar el entorno de `React.js`, debemos ejecutar el siguiente comando:
-`npm create vite test -- --template` 
-
+`npm create vite test -- --template`
 Seleccionamos la libreria `React`
 ![paso 1](./images/image-3.png)
 
@@ -36,5 +34,3 @@ Al finalizar, ya tenemos el entorno para desarrollar con `React.js`
 El contenido con el que vamos a trabajar, se encuentra el el directorio `src`:
 
 ![Alt text](./images/image-9.png)
-
-

@@ -1,9 +1,20 @@
-import Header from "./components/Header"
+// import Header from "./components/Header"
+
+// function App() {
+//   return (
+//     <Header></Header>
+//   );
+// }
+
+// export default App
+
+import ClaseDos from "./components/claseDos/ClaseDos"
 
 function App() {
   return (
-    <Header></Header>
+    <>
+      <ClaseDos/>
+    </>
   );
 }
-
-export default App
+export default App;
