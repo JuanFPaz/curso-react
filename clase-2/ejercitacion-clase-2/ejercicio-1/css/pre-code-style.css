@@ -1,0 +1,36 @@
+pre{
+    width:max-content;
+    white-space: pre-line;
+    background-color: rgba(0, 0, 0, 0.945);
+    border-radius: 5px;
+    color: aliceblue;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.palabraReservada{
+    color: rgb(173, 24, 173);
+}
+
+.nombreFunction{
+    color: rgb(235, 199, 40);
+}
+
+.operadoresPuntuaciones{
+    color: rgb(235, 151, 40);
+
+}
+.parentesisCallback,
+.interpolacion{
+    color: rgb(117, 15, 117);
+}
+.cadenaDeTexto{
+    color: greenyellow;
+}
+.referenciaVariables{
+    color: aqua;
+}
+
+.padding{
+    padding-left: 20px;
+}
