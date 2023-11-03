@@ -17,6 +17,8 @@ Realizar un llamado a la función de ejemplo.
 
 Ejercicio 2
 Desarrollador una calculadora que tenga:
-- 2 campos inputs para los operadnos
-- 4 botones de operadores básicos (suma, resta, multiplicación, división)
-Al realizar la cuenta se deberá actualizar el campo resultado
+
+- 2 campos inputs para los operandos.
+- 4 botones de operadores básicos (suma, resta, multiplicación, división).
+
+Al realizar la cuenta se deberá actualizar el campo resultado.

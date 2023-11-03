@@ -42,9 +42,11 @@ function suma(a,b,callback){
     callback(c);
 }
 
-suma(5,6,(c)=>{
-    console.log(`El resultado de la suma es ${c}`);
+suma(5, 6, function (c) {
+    var parrafo = document.getElementById("resultado");
+    parrafo.innerHTML = "El resultado de la suma es " + c;
 });
+
 ```
 
 Para poder transpilar este codigo `Javascript` a `ES5`, primero tenemos que crear un archivo con la extension `.babelrc` en el directorio donde estamos trabajando (en este caso **ejercicio-prueba**)y dentro le colocamos la siguiente linea de codigo:
