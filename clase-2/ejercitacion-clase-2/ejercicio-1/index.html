@@ -1,11 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 1 - Callbacks</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./build/main.js" defer></script>
 </head>
+
 <body>
-    
+    <main>
+        <h1>¿Que son las callbacks?</h1>
+        <p>Un callback es una función pasada como argumento a otra función.</p>
+        <p> Esta técnica permite que una función llame a otra función.</p>
+        <p> Una función de callback puede ejecutarse después de que otra función haya terminado.</p>
+
+        <p>En el contexto de esta funcion Suma, nos solicita 3 parametros:</p>
+        <ol>
+            <li>Los parametros A y B son los numeros a sumar.</li>
+            <li>El parametro callback es la funcion que se va a ejecutar despues de realizar la suma.</li>
+        </ol>
+        <pre>
+            <code>
+                <span class="palabraReservada">function</span> <span class="nombreFunction">suma</span><span class="nombreFunction">(</span><span>a,b,callback</span><span class="nombreFunction">)</span><span class="nombreFunction">{</span> 
+                    <span class="palabraReservada padding">let</span> <span class = "referenciaVariables">c</span> <span class="operadoresPuntuaciones">=</span> <span class = "referenciaVariables">a</span> <span class="operadoresPuntuaciones">+</span> <span class = "referenciaVariables">b</span>;
+                    <span class="nombreFunction padding">callback</span><span class="parentesisCallback">(</span><span class="referenciaVariables">c</span><span class="parentesisCallback">)</span>;
+                <span class="nombreFunction">}</span>
+            </code>
+        </pre>
+
+        <h2>¿Como se implementa esta callback?</h2>
+        <p>Por ejemplo, podriamos crear una Funcion para mostrar el resultado, la cual reciba como parametro, el
+            resultado
+            de la suma, y que la muestre en nuestro navegador.</p>
+        <pre>
+            <code>
+            <span class="palabraReservada">function</span> <span class="nombreFunction">mostrarResultado</span><span class="nombreFunction">(</span><span>c</span><span class="nombreFunction">)</span><span class="nombreFunction">{</span> 
+                <span class="palabraReservada padding">const</span> <span class="referenciaVariables">parrafo</span> <span class="operadoresPuntuaciones">=</span> <span class = "referenciaVariables">document</span><span class="operadoresPuntuaciones">.</span><span class="nombreFunction">getElementById</span><span class="parentesisCallback">(</span><span class="cadenaDeTexto">"resultado"</span><span class="parentesisCallback">)</span>;
+                <span class = "referenciaVariables padding">parrafo</span><span class="operadoresPuntuaciones">.</span><span>innerHTML</span> <span class="operadoresPuntuaciones">=</span> <span class="cadenaDeTexto">`El resultado de la suma es </span><span class="interpolacion">${</span><span class = "referenciaVariables">c</span><span class="interpolacion">}</span><span class="cadenaDeTexto">`</span>;   
+            <span class="nombreFunction">}</span>
+            </code>
+        </pre>
+        <p>Ahora, para llamar esta funcion, invocamos la funcion <strong>suma</strong> y le pasamos como parametro, la
+            funcion <strong>mostrarResultado</strong>.</p>
+        <p>Al momento de pasar la <strong>callback</strong>, no hay que poner los parentesis, ya que la funcion
+            <strong>suma</strong> es la que se encarga de invocarla.
+        </p>
+        <pre>
+            <code>
+                <span class="nombreFunction">suma</span><span class="nombreFunction">(</span><span class="palabraReservada">5</span>,<span class="palabraReservada">5</span>,<span class="referenciaVariables">mostrarResultado</span><span class="nombreFunction">)</span>;
+            </code>
+        </pre>
+
+        <div>
+            <p id="resultado"></p>
+        </div>
+    </main>
 </body>
+
 </html>

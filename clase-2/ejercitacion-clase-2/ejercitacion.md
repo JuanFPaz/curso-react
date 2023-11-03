@@ -5,10 +5,14 @@
 ### Ejercicio 1
 
 Tengo desarrollada la siguiente función en javascript
+
+```js
 function suma (a,b,callback){
-let c = a +b;
-callback( );
+    let c = a +b;
+    callback( );
 }
+```
+
 ¿Que es el tercer parámetro recibido?
 ¿En que casos es obligatorio desarrollar este tipo de funciones?
 Realizar un llamado a la función de ejemplo.
