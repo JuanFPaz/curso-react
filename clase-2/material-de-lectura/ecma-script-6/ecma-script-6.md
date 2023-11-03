@@ -30,7 +30,7 @@ Los transpiladores son programas capaces de traducir el código de un lenguaje p
 
 El transpilador es una herramienta que se **usa durante la fase de desarrollo.** En esta fase, podemos escribir codigo y el transpilador lo convierte en un priceso de *"traduccion/compilacion = transpilacion"*. EL codigo transpilado, compatible es el que se distribuye o despliega para llevar a produccion. Por tanto, todo el trabajo de traduccion del codigo, se queda solo en la etapa dedesarrollo y no supone una carga mayor para el sistema donde se va a ejecutar de cara al publico.
 
-Hoy tenemos transpiladores para traducir `ES6` a `ES5`, pero tambien los hay para traducir de otros lenguajes a `JavaScript`, como por ejemplo `TypeScript`, que nos permite transpilar el codigo a cualquier estandar de `Javascript` como `ES5` o `ES6`.
+Hoy tenemos transpiladores para traducir `ES6` a `ES5`, pero tambien los hay para traducir de otros lenguajes a `JavaScript`, como por ejemplo el `TypeScript`, que nos permite transpilar el codigo a cualquier estandar de `Javascript` como `ES5` o `ES6` con su compilador `tsconfig.json`.
 
 ## Javascript - Template String
 
@@ -54,20 +54,41 @@ En este ejemplo, utilizamos los **ambitos de bloque** (una implementacion de `ES
 
 ## Javascript - Let y Const
 
-Con `ES6` podemos definir las variables con las palabras reservadas `let` y `const`. La principal diferencia entre ellas se presenta que las variables definidas con `const` (conocidas como **constantes**), no pueden cambiar su valor, es decir una ves que definimos una **constante**, siempre representara es valor. Por eso es una buena practica hacer referencia a los arreglos, objetos y objetos del DOM con una `const`.
+Con `ES6` podemos definir las variables con las palabras reservadas `let` y `const`. La principal diferencia entre ellas se presenta que las variables definidas con `const` (conocidas como **constantes**), no pueden reasignar su valor, es decir una ves que definimos una **constante**, siempre representara es valor. Por eso es una buena practica hacer referencia a los arreglos, objetos y objetos del DOM con una `const`.
 
-Por su parte, las variables definidas con `let`, pueden ser inicializadas con un valor y pueden redeclarar un valor.
+Por su parte, las variables definidas con `let`, pueden ser inicializadas con un valor y pueden reasignar un valor (No confundir con Redeclara un valor).
 
 ```js
-let unaVariable = "Las variables definidas con `let`, pueden ser inicializadas con un valor y pueden redeclarar un valor."
+let unaVariable = "Las variables definidas con `let`, pueden ser inicializadas con un valor y pueden reasignar un valor."
 
-const unaConstante = "Una constante no puede cambiar si valor una ves que la inicializamos.";
+const unaConstante = "Una constante no puede cambiar su valor una ves que la inicializamos.";
 
 console.log(unaVariable);
 console.log(unaConstante);
 
-unaVariable = "Tranquilamente, aca podemos redeclar un nuevo valor para la variable LET, puede ser mismo un String, un Number, un Boolean, etc."
+unaVariable = "Tranquilamente, aca podemos reasignar un nuevo valor para la variable LET, puede ser mismo un String, un Number, un Boolean, etc."
 
 // unaConstante = "Si intentamos cambiar el valor de la constante, la consola nos mostrar aun mensaje de error"
 ```
 
+## Scope (Alcance de ambito)
+
+Antes de `ES6`, Javascript tenia 2 tipos de ambitos: El `Global Scope` (Ambito Global) y el `Function Scope` (Ambito de funcion.).
+
+El ambito global es donde literalmente toda nuestro archivo `Javascript.` Cada Linea de codigo que escribimos, la escribimos en el ambito global. Dentro de este ambito global, tambien esta el ambito de funcion, las cuales estas pueden hacer referencia a las variables declaradas en el ambito global, pero no viceversa:
+
+```js
+/*Esto seria el ambito global*/
+let unaGata = "Luxa Paz";
+console.log(unGata);
+
+function ambitoDeFuncion(){
+    let unGato = "Peperino Paz";
+    console.log(unaGata);
+    console.log(unGato);
+}
+
+console.log(unGato);
+```
+
+Con la llegada de `ES6`, se introdujo el `Bloque Scope` (Ambito de Bloque, que vimos en el primer ejemplo). Este ambito nos permite declarar las variables `let` y `const` que no seran accesibles en el Ambito global.

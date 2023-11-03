@@ -20,6 +20,7 @@ async function main() {
         */
         evento.preventDefault();
         const datosContact = document.getElementById("datos-contact");
+        const datosModal = document.getElementById("datos-modal")
         const spinnerModal = document.getElementById("spinner-modal");
         async function cargarModal(unosDatos, unDiv) {
             /*creamos una referencia al modal de BS para agregar el contenido*/
@@ -35,8 +36,8 @@ async function main() {
                 }, 1500)
             })
         }
-        const formData = new FormData(form);
 
+        const formData = new FormData(form);
         const nombre = formData.get("nombre");
         const apellido = formData.get("apellido");
         const dni = formData.get("dni");
@@ -52,17 +53,13 @@ async function main() {
             <li><strong>Email:</strong> ${email}</li>
             <li><strong>Teléfono:</strong> ${telefono}</li>
             <li><strong>Tipo de Seguro:<strong> ${tipoSeguro}</li>
-        </ul>
-        <div class="botones-modal">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Volver</button>
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Finalizar</button>
-        </div>        
+        </ul>   
         `;
 
         /*Esperamos que se resuelva la promesa de cargarModal del evento
         y en caso de un error, finalizar la ejecucion de la funcion*/
         try {
-            await cargarModal(resumen, datosContact);
+            await cargarModal(resumen, datosModal);
         } catch (err) {
             console.error(err);
             return;
