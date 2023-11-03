@@ -110,9 +110,9 @@ async function main() {
             Evento que se ejecuta cuando el usuario hace click en el boton de finalizar del modal
             con un tiempo de espera casi inmediado de 250ms, se reinicia la pagina.
         */
-            setTimeout(()=>{
-                location.reload();
-            },250)
+        setTimeout(()=>{
+            location.reload();
+        },250)
     }
     try {
         /*
