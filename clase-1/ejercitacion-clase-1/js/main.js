@@ -2,9 +2,11 @@ async function main() {
     const spinner = document.getElementById("spinner-container");
     const form = document.getElementById("form-contact");
     const tipoSeguro = document.getElementById("tipo-seguro");
+    const modalDatos = document.getElementById("datos-cargados")
+    const finalizarSolicitud = document.getElementById("finalizar-solicitud");
 
 
-    async function finalizarSpinner() {
+    function finalizarSpinner() {
         /*Creo una promesa que simplemente se resuelve despues de 3000ms*/
         return new Promise((res, rej) => {
             setTimeout(() => {
@@ -12,7 +14,6 @@ async function main() {
             }, 3000);
         })
     }
-
     async function eventoFormulario(evento) {
         /*
             Creamos el evento del formulario que se va a ejecutar cuando carguemos y enviemos los datos.
@@ -22,16 +23,14 @@ async function main() {
         const datosContact = document.getElementById("datos-contact");
         const datosModal = document.getElementById("datos-modal")
         const spinnerModal = document.getElementById("spinner-modal");
-        async function cargarModal(unosDatos, unDiv) {
+
+        function cargarModal(unosDatos, unDiv) {
             /*creamos una referencia al modal de BS para agregar el contenido*/
             const modalDatos = new bootstrap.Modal(document.getElementById('datos-cargados'));
             modalDatos.show();
             unDiv.innerHTML = unosDatos;
-
             return new Promise((res) => {
-                /*Establecemos un tiempo de espera de al menos 1500 ms para ejecutar el spinner del modal*/
                 setTimeout(() => {
-                    unDiv.innerHTML = unosDatos;
                     res();
                 }, 1500)
             })
@@ -67,7 +66,6 @@ async function main() {
         spinnerModal.style.display = "none";
         datosContact.style.display = "block";
     }
-
     function eventoSelect(evento) {
         /*
             Creamos un evento para el select del formulario
@@ -98,7 +96,24 @@ async function main() {
         }
         mostrarMensaje[valor]();
     }
+    function eventoModalHidden(){
+        /*Evento que se dispara cuando se cierra el modal, 
+        para cuando se vuelva a abrir, se ejecute nuevamente el spiiner de carga*/
+        const datosContact = document.getElementById("datos-contact");
+        const spinnerModal = document.getElementById("spinner-modal");
 
+        datosContact.style.display = "none";
+        spinnerModal.style.display = "block";
+    }
+    function eventoFinalizar(){
+        /*
+            Evento que se ejecuta cuando el usuario hace click en el boton de finalizar del modal
+            con un tiempo de espera casi inmediado de 250ms, se reinicia la pagina.
+        */
+            setTimeout(()=>{
+                location.reload();
+            },250)
+    }
     try {
         /*
             Esperamos que se resuelva la promesa, y en caso de detectar un error, 
@@ -113,6 +128,8 @@ async function main() {
     form.style.visibility = "visible";
     tipoSeguro.addEventListener("change", eventoSelect);
     form.addEventListener("submit", eventoFormulario);
+    modalDatos.addEventListener("hidden.bs.modal",eventoModalHidden);
+    finalizarSolicitud.addEventListener("click",eventoFinalizar)
 }
 
 function resetForm() {
@@ -134,6 +151,7 @@ function controllWheel() {
         e.preventDefault();
     });
 }
+
 main();
 controllWheel();
 resetForm();
