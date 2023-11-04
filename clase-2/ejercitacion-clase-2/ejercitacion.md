@@ -20,7 +20,7 @@ Realizar un llamado a la función de ejemplo.
 ### Ejercicio 2
 
 Ejercicio 2
-Desarrollador una calculadora que tenga:
+Desarrollar una calculadora que tenga:
 
 - 2 campos inputs para los operandos.
 - 4 botones de operadores básicos (suma, resta, multiplicación, división).
