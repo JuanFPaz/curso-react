@@ -66,8 +66,89 @@
                     </pre>
 
                     <div>
-                        <p id="resultado"></p>
+                        <p class="alert alert-success" id="resultado"></p>
                     </div>
+                </section>
+                <section>
+                    <h2>¿En que casos se utilizan las Callbacks?</h2>
+                    <p>El ejemplo que vimos recientemente es muy sencillo, pero sirve para introducirnos a las
+                        <strong>callbacks</strong>.
+                    </p>
+                    <p>En la gran mayoria de los casos, suelen utilizarse para resolver <strong>Promesas</strong>, un
+                        objeto de <strong>Javascript</strong> que realiza tareas asincronicas a traves de un codigo
+                        productor y codigo consumidor</p>
+                    <p>Veamos un ejemplo</p>
+                    <pre>
+                        <code>
+                            function suma(a, b) {
+                                return new Promise((resolve, reject) => {
+                                    let c = a + b;
+                                    if (c) {
+                                        res(c);
+                                    } else {
+                                        rej("Error: No se pudo realizar la suma correctamente");
+                                    }
+                                });
+                            }
+                        </code>
+                    </pre>
+                    <p>En este ejemplo, convertimos nuestra funcion suma en una <strong>Promesa</strong>, y vemos que en
+                        el constructor del objeto <strong>Promise</strong> tiene definida una <strong>Arrow
+                            Function</strong> como argumento.</p>
+                    <p>Esta parte del codigo se llama <strong>Codigo Productor</strong>, y como mencionamos
+                        anteriormente, a su ves, recibe dos <strong>callbacks</strong> como argumento para resolver la
+                        promesa:</p>
+                    <ul>
+                        <li><strong>resolve</strong>: Si la tarea se completa exitosamente, se llama esta
+                            <strong>callback</strong> para pasarle un valor.
+                        </li>
+                        <li><strong>reject</strong>: Si la tarea falla, o no se cumple con alguna condicion, se llama
+                            esta <strong>callback</strong> con un mensaje de porque no se cumplio la promesa.</li>
+                    </ul>
+                    <p>En este caso, nos encargamos de realizar la suma, si no hay ningun problema, la promesa resuelve
+                        con exito la suma, de lo contrario, nos devolveria un error.</p>
+                    <p>Para utilizar las promesas, usamos el <strong>.then()</strong> y <strong>.catch()</strong>. Esta
+                        parte del es la que se llama <strong>Codigo consumidor</strong>, porque es cuando queremos
+                        mostrar, o utilizar el resultado de la promesa.</p>
+                    <ol>
+                        <li>El <strong>.then()</strong> lo utilizamos para obtener el resultado exitoso de la promesa.
+                            Utilizamos una <strong>callback</strong> que recibe como argumento el valor de la promesa
+                            (que en este caso es el resultado de la suma).</li>
+                        <li>El <strong>.catch()</strong> lo utilizamos cuando nuestra promesa es rechazada u ocurre un
+                            error inesperado. Utilizamos una callback que recibe como argumento el error de la promesa
+                            (que en este caso, es el mensaje que de la promesa rechazada).</li>
+                    </ol>
+                    <p> Por ejemplo, veamos como seria una promesa <strong>Cumplida</strong> y otra
+                        <strong>rechazada</strong>:</p>
+                    <pre>
+                        <code>
+                            suma(5, 5)
+                                .then((resultado) => {
+                                    const resultadoPromesa = document.getElementById("resultadoPromesa");
+                                    resultadoPromesa.innerHTML = `El resultado de la suma es ${resultado}`;
+                                })
+                        .catch((error) => {
+                                    const errorPromesa = document.getElementById("errorPromesa");
+                                    errorPromesa.innerHTML = error
+                                })
+                        </code>
+                    </pre>
+                    <p class="alert alert-info" id="resultadoPromesa"></p>
+
+                    <pre>
+                        <code>
+                            suma(5)
+                                .then((resultado) => {
+                                    const resultadoPromesa = document.getElementById("resultadoPromesa");
+                                    resultadoPromesa.innerHTML = `El resultado de la suma es ${resultado}`;
+                                })
+                            .catch((error) => {
+                                    const errorPromesa = document.getElementById("errorPromesa");
+                                    errorPromesa.innerHTML = error
+                                })
+                        </code>
+                    </pre>
+                    <p class="alert alert-danger" id="errorPromesa"></p>
                 </section>
             </div>
         </main>
