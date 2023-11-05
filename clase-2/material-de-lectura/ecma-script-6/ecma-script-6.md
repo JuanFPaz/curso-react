@@ -295,10 +295,136 @@ En este ejemplo, utilizamos `Spread` para combinar los dos arreglos (`arreglo` y
 Ademas de los arreglos, los `spread` tambien se puede utilizar con objetos par acombinar propiedades de multiples objetos, en uno solo:
 
 ```js
-const objeto = {a: 1, b:2};
-const objetoDos = {c:3, d:4};
+let alumno = {nombre : "Juan",apellido : "Paz"};
+let curso = {curso: "ReactJs", modalidad: "Online"}
 
-const objetoNuevo = {...objeto, ...objetoDos};
+let alumnoCurso = {...alumno, ...curso};
 
-console.log(objetoNuevo) //Output -> 
+console.log(alumnoCurso); //Output -> { nombre: 'Juan', apellido: 'Paz', curso: 'Reactjs' }
 ```
+
+Otra funcionalidad del `Spread`, es que nos permite "copiar" un objeto. Es decir, utilizamos este operador, estamos creando un nuevo objeto con las mismas propiedades y valores que el objeto original. Por ejemplo:
+
+```js
+const objetoOriginal = {a:1, b:2};
+const objetoCopia = {...objetoOriginal};
+
+objetoCopia.a = 10;
+console.log(`La propiedad "a" del objeto Copia ahora vale 10: ${objetoCopia}`);
+console.log(`La propiedad "a" del objeto Original siguie valiendo 1:${objetoOriginal}`);
+```
+
+Esto es importante saber, porque generalmente cuando uno crea una referencia un objeto sin el operador `Spread`, generalmente suele tener problemas indeseados. Por ejemplo:
+
+```js
+const objetoCopiaDos = objetoOriginal;
+
+objetoCopiaDos.a = 100;
+console.log(`La propiedad "a" del objeto Copia Dos ahora vale 100: ${objetoCopia}`);
+console.log(`La propiedad "a" del objeto Original ahora vale 100:${objetoOriginal}`);
+```
+
+El operador `Rest` tiene una sintaxis similar al `Spread`, pero este solo se utiliza al momento de definir una funcion, y se lo pasa como argumento. Al utilizar un parametro `rest` en una funcion, nos permite aceptar cualquier cantidad de datos como argumentos y crea un nuevo arreglo. Por ejemplo:
+
+```js
+function rest(...numeros){
+    console.log(numeros);
+}
+
+rest(100,15,221,54,6879,5,13,246,4984,555,) // Output -> [100,15,21,54,6879,5,13,246,4984,555]
+```
+
+Tambien podemos aplicar `Rest` en objetos o arreglos, en combinacion con la `Descontruccion` que vimos previamente. Basicamente, seria mezclar lo visto con los `deconstructores`, `spread` y `rest.`
+
+Por ejemplo, si tenemos este objeto, y queremos tener una referencia del nombre, y separar el resto de sus propiedades, con `rest` podemos hacer esto:
+
+```js
+const repartidor = {nombre: "Agustin Jimenez", moto:"Suzuki", aplicaciones: ["Pedidos ya", "Rapiboy"]};
+const {nombre, ...datosAdicionales} = repartidor;
+console.log(nombre); // output -> "Agustin Jimenez".
+console.log(datosAdicionales); // Output -> {moto: "Suzuki", aplicaicones: ["Pedidos ya", "rapiboy"]}
+```
+
+En este caso, separamos el nombre del objeto `repartidor`, y con el operador `rest` capturamos el resto de los datos de este objeto en la `deconstruccion.`
+
+## Promesas
+
+Una `Promises` (promesa en castellano), es un objeto que representa la terminacion o el fracaso eventual de una operacion asincrona. Las promesas se crean utilizando su constructor, y este recibe una `callback` y que a su vez tambien recibe otras dos `callbacks` para definir el resultado del estado de la promesa. `Resolve` y `Reject`, Por ejemplo:
+
+```js
+/*Codigo Productor*/
+const promesa = new Promise((res,rej)=>{
+    //Si esta condicion se cumple, la promesa llama la callback resolve y envia una respuesta exitosa. De lo contrario, la promesa envia una respuesta de error con la callback reject.
+    let x = 10;
+    if(x === 10){
+        res("Promesa Resuelta");
+    }else {
+        rej("Promesa Rechazada");
+    }
+});
+
+/*Condigo consumidor*/
+promesa.then((resultado)=>{
+    console.log(resultado); //Output -> "Promesa Resulta"
+}).catch((error)=>{
+    console.error(error); // Output -> "Promesa rechazada"
+})
+```
+
+Las `Promises` se dividen en dos partes: El `codigo productor` y el `codigo consumidor`.
+
+El `codigo productor` de una promesa se encarga de enviar la respuesta, la cual puede llevar tiempo en ejecutarse, y nos puede enviar dos estados posibles, `resolve` y `reject`. En el ejemplo anterior, vemos que si `x === 10`, la promesa nos devuelve una respuesta exitosa, llamando a la callback `resolve` (`res` en este ejemplo). Y en caso de que esa condicion no se cumpla, la promesa nos devolvera una respuesta de error, llamando a la callback `Reject` (`rej` en este caso).
+
+El `codigo consumidor`, debe esperar uno de los resultados de la promesa. Por eso se dice, que las promesa son tareas asincronas, porque nos permite realizar otras funciones mientras esperamos que se resuelva una promesa. Para poder utilizar una promesa, utilizamos la funcion `.then()` y `.catch()`, que reciben como argumento una callback, para poder trabajar con el resultado exisoto de la promesa, o con el resultado de error de la promesa.
+En el ejemplo anterior, cuando se cumple la promesa, vemos que pasamos como argumento el `resultado` de la promesa, y luego la mostramos por consola. Y con la funcion `catch`, podemos manejar el error de la promesa cuando esta la rechaza, o bien cuando ocurre otro error inesperado, permitiendonos, tener mayor control sobre el codigo identificando el error inesperado y manejarlos correctamente.
+
+El ejemplo que vimos anteriormente es muy sencillo para introduccirnos a las `Promesas`, pero no sirve si quermos ver como manejar datos devueltos de una promesa. Por ejemplo tenemos esta promesa que nos va a devolver un objeto, utilizando la funcion `setTimeout`. Esta funcion recibe 2 parametros, una `callback` y un tiempo en milisegundos (`ms`) que le indica cuanto tiempo debe esperar para ejecutar la `callback`. Dentro de la `callback`, es donde vamos a colocar el codigo productor de nuestra promesa:
+
+```js
+const promesaSobreElBidet = new Promise((res,rej)=>{
+    console.log("Obteniendo datos...")
+    setTimeout(()=>{
+        let forzarError = x => x === 10;
+        const pianoBar = {
+            nombreAlbum: "Piano Bar",
+            artistas : ["Charly Garcia", "Fito Paez", "Pablo Guyot", "Willy Iturri", "Alfredo Toth"],
+            listaCanciones: ["Demoliendo Hoteles", "Promesas Sobre el bidet", "Raros peinados nuevos", "Piano Bar", "No te animas a despegar", "No se va a llamar mi amor", "Tuve tu amor", "Rap del exilio", "Cerca de la revolucion", "Total interferencia"],
+            totalCanciones: 10,
+            año: 1984,
+        };
+        if(forzarError(0)){
+            rej("No se pudo obtener el resultado porque forzamos el error.");
+        }else{
+            res(pianoBar);
+        }
+    },2500)
+});
+```
+
+En el codigo productor, creamos una funcion para forzar un error parametrizable, solamente de prueba. Tenemos el objeto `pianoBar` que nuestra promesa va a devolver si se cumple la condicion con la funcion creada previamente. Si le pasamos un parametro 10 a `forzarError`, la promesa va a ser rechazada. Si le cambiamos otro valor que no sea 10, nuestra promesa, se resuelve con exito, enviando el objeto `pianoBar.`
+
+```js
+promesaSobreElBidet.then((resultado)=>{
+    console.log("Datos obtenidos!")
+    const {nombreAlbum, artistas, listaCanciones,totalCanciones,año} = resultado;
+    const [autor, tecladista, guitarrista, baterista, bajista] = artistas;
+    const disco = `
+    Album: ${nombreAlbum}
+    Fecha de lanzamiento: ${año}
+    Canciones: ${totalCanciones};
+    Artista: ${autor};
+    Teclados: ${tecladista};
+    Guitarra: ${guitarrista};
+    Bajo: ${bajista};
+    Bateria: ${baterista};
+    Canciones: ${totalCanciones};
+    Lista de canciones: ${listaCanciones}
+    `;
+    console.log(disco)
+}).catch(error => {
+    console.error(error);
+})
+```
+
+El codigo consumidor, solamente va a estar esperando que se resuelva la promesa, y a traves del `then`, vamos a manipular el resultado obtenido, para mostrar los datos del objeto.
+Y si forzamos el error en el codigo productor, se ejecutara la funcion `catch`.

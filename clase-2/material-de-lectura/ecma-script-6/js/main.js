@@ -108,3 +108,82 @@ let alumno = {nombre : "Juan",apellido : "Paz"};
 let alumnoCurso = {...alumno, curso:"Reactjs"};
 
 console.log(alumnoCurso);
+
+const objetoOriginal = {a:1, b:2};
+const objetoCopia = {...objetoOriginal};
+
+objetoCopia.a = 10;
+console.log(`La propiedad "a" del objeto Copia ahora vale 10: ${objetoCopia.a}`);
+console.log(`La propiedad "a" del objeto Original siguie valiendo 1:${objetoOriginal.a}`);
+
+const objetoCopiaDos = objetoOriginal;
+
+objetoCopiaDos.a = 100;
+console.log(`La propiedad "a" del objeto Copia Dos ahora vale 100: ${objetoCopia.a}`);
+console.log(`La propiedad "a" del objeto Original ahora vale 100:${objetoOriginal.a}`);
+
+function rest(...numeros){
+    console.log(numeros);
+}
+
+rest(100,15,221,54,6879,5,13,246,4984,555)
+
+/* promesas sobre el bidet*/
+
+/*Codigo Productor*/
+const promesa = new Promise((res,rej)=>{
+    //Si esta condicion se cumple, la promesa llama la callback resolve y envia una respuesta exitosa. De lo contrario, la promesa envia una respuesta de error con la callback reject.
+    let x = 10;
+    if(x === 10){
+        res("Promesa Resuelta");
+    }else {
+        rej("Promesa Rechazada");
+    }
+});
+
+/*Condigo consumidor*/
+promesa.then((resultado)=>{
+    console.log(resultado); //Output -> "Promesa Resulta"
+}).catch((error)=>{
+    console.error(error); // Output -> "Promesa rechazada"
+})
+
+const promesaSobreElBidet = new Promise((res,rej)=>{
+    console.log("Obteniendo datos...")
+    setTimeout(()=>{
+        let forzarError = x => x === 10;
+        const pianoBar = {
+            nombreAlbum: "Piano Bar",
+            artistas : ["Charly Garcia", "Fito Paez", "Pablo Guyot", "Willy Iturri", "Alfredo Toth"],
+            listaCanciones: ["Demoliendo Hoteles", "Promesas Sobre el bidet", "Raros peinados nuevos", "Piano Bar", "No te animas a despegar", "No se va a llamar mi amor", "Tuve tu amor", "Rap del exilio", "Cerca de la revolucion", "Total interferencia"],
+            totalCanciones: 10,
+            año: 1984,
+        };
+        if(forzarError(0)){
+            rej("No se pudo obtener el resultado porque forzamos el error.");
+        }else{
+            res(pianoBar);
+        }
+    },2500)
+});
+
+promesaSobreElBidet.then((resultado)=>{
+    console.log("Datos obtenidos!");
+    const {nombreAlbum, artistas, listaCanciones,totalCanciones,año} = resultado;
+    const [autor, tecladista, guitarrista, baterista, bajista] = artistas;
+    const disco = `
+    Album: ${nombreAlbum}
+    Fecha de lanzamiento: ${año}
+    Canciones: ${totalCanciones};
+    Artista: ${autor};
+    Teclados: ${tecladista};
+    Guitarra: ${guitarrista};
+    Bajo: ${bajista};
+    Bateria: ${baterista};
+    Canciones: ${totalCanciones};
+    Lista de canciones: ${listaCanciones}
+    `;
+    console.log(disco)
+}).catch(error => {
+    console.error(`Ocurrio un error inesperado: ${error}`);
+})

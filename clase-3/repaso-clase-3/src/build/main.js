@@ -7,7 +7,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 var Saludo = /*#__PURE__*/function () {
   function Saludo() {
     _classCallCheck(this, Saludo);
-    this.saludo = "Hola a todes!!";
+    this.saludo = 'Hola a todos!';
+    this.miau = 'asd';
   }
   _createClass(Saludo, [{
     key: "getSaludo",
