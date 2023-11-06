@@ -1,11 +1,12 @@
 class Saludo{
     constructor(){
         this.saludo = 'Hola a todos!';
-        this.miau = 'asd';
+        this.numero = 25;
     }
     getSaludo(){
         return this.saludo;
     }
+    
 }
 
 export function saludo(){
