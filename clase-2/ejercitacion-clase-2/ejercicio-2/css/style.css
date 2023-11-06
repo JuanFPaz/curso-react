@@ -1,0 +1,6 @@
+/*Quitamos los botones que vienen por defecto en el input type number*/
+input {
+	appearance: textfield !important;
+	-webkit-appearance: textfield !important;
+	-moz-appearance: textfield !important;
+}

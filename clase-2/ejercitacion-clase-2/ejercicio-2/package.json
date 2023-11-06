@@ -1,0 +1,25 @@
+{
+	"name": "ejercicio-2",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"format": "prettier --write .",
+		"lint": "eslint --fix . --ext .js",
+		"babel": "babel js -d build"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/cli": "^7.23.0",
+		"babel-preset-env": "^1.7.0",
+		"eslint": "^8.53.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-config-standard": "^17.1.0",
+		"eslint-plugin-import": "^2.29.0",
+		"eslint-plugin-n": "^16.2.0",
+		"eslint-plugin-promise": "^6.1.1",
+		"prettier": "^3.0.3"
+	}
+}

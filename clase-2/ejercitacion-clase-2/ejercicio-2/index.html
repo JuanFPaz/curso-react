@@ -1,27 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Ejercicio 2 - Calculadora Basica</title>
+		<script src="./build/main.js" defer></script>
+		<link rel="stylesheet" href="./css/style.css" />
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 2 - Calculadora Basica</title>
-    <script src="./build/main.js"></script>
-</head>
-
-<body>
-    <form id="calculadora-form">
-        <div>
-            <input type="number" name="numero-uno" id="numero-uno">
-            <input type="number" name="numero-dos" id="numero-dos">
-        </div>
-        <div>
-            <p class="resultado"></p>
-        </div>
-    </form>
-    <div>
-        <button id="suma">+</button><button id="resta">-</button><button id="multiplicacion">x</button><button
-            id="division">%</button>
-    </div>
-</body>
-
+	<body>
+		<form id="calculadora-form">
+			<div class="operando-contenedor">
+				<!-- Creamos un evento onkeypress para que los input acepten valores numericos y valores negativos-->
+				<input
+					type="text"
+					name="operando-uno"
+					id="operando-uno"
+					onkeypress="return validaNumericos(event)"
+					required
+				/>
+				<input
+					type="text"
+					name="operando-dos"
+					id="operando-dos"
+					onkeypress="return validaNumericos(event)"
+					required
+					disabled
+				/>
+			</div>
+			<div class="resultado-contenedor">
+				<p class="resultado"></p>
+			</div>
+		</form>
+		<div class="operadores-contenedor">
+			<button id="suma" disabled>+</button><button id="resta" disabled>-</button
+			><button id="multiplicacion" disabled>x</button
+			><button id="division" disabled>%</button>
+		</div>
+	</body>
 </html>
