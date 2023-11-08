@@ -1,39 +1,74 @@
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Ejercicio 2 - Calculadora Basica</title>
-		<script src="./js/utilidades.js" defer></script>
-		<script src="./js/main.js" defer></script>
-		<link rel="stylesheet" href="./css/style.css" />
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 2 - Calculadora Basica</title>
+    <script src="./js/utilidades.js" defer></script>
+    <script src="./js/main.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
 
-	<body>
-		<form id="calculadora-form">
-			<div class="operando-contenedor">
-				<!-- Creamos un evento onkeypress para que los input acepten valores numericos y valores negativos-->
-				<input
-					type="text"
-					name="operando-uno"
-					id="operando-uno"
-					required
-				/>
-				<input
-					type="text"
-					name="operando-dos"
-					id="operando-dos"
-				/>
-			</div>
-			<div class="resultado-contenedor">
-				<p class="resultado"></p>
-			</div>
-		</form>
-		<div class="operadores-contenedor">
-			<button id="suma">+</button>
-			<button id="resta">-</button>
-			<button id="multiplicacion">x</button>
-			<button id="division">%</button>
-		</div>
-	</body>
+  <body>
+    <div class="container-fluid flex p-0">
+      <main>
+        <div>
+          <h1>Calculadora</h1>
+          <p>Rellene los dos campos y seleccione la operacion a realizar.</p>
+        </div>
+        <div class="flex">
+          <form id="calculadora-form">
+            <div class="operando-contenedor">
+              <input
+                class="form-control"
+                type="text"
+                name="operando-uno"
+                id="operando-uno"
+              />
+              <input
+                class="form-control"
+                type="text"
+                name="operando-dos"
+                id="operando-dos"
+              />
+            </div>
+            <div id="resultado-contenedor"></div>
+          </form>
+          <div
+            class="operadores-contenedor btn-group-vertical btn-group-lg"
+            id="calculadora-button"
+          >
+            <button type="button" class="btn btn-outline-danger" id="suma">
+              <strong>+</strong>
+            </button>
+            <button type="button" class="btn btn-outline-danger" id="resta">
+              <strong>-</strong>
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              id="multiplicacion"
+            >
+              <strong>*</strong>
+            </button>
+            <button type="button" class="btn btn-outline-danger" id="division">
+              <strong>/</strong>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

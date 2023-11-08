@@ -1,4 +1,4 @@
-function validarDatos() {
+function main() {
   const operandoUno = document.getElementById('operando-uno')
   const operandoDos = document.getElementById('operando-dos')
 
@@ -20,6 +20,15 @@ function validarDatos() {
       }
     }
   }
+  function focus(opUno, opDos) {
+    opUno.onchange = () => {
+      opDos.focus()
+    }
+
+    opDos.onchange = () => {
+      opUno.focus()
+    }
+  }
   function controllWheel(opNum) {
     opNum.onmousewheel = (event) => {
       event.preventDefault()
@@ -29,6 +38,7 @@ function validarDatos() {
   eventCharCode(operandoDos)
   controllWheel(operandoUno)
   controllWheel(operandoDos)
+  focus(operandoUno, operandoDos)
 }
 
 function resetForm() {
@@ -38,5 +48,5 @@ function resetForm() {
     await form.reset()
   })
 }
-validarDatos()
+main()
 resetForm()

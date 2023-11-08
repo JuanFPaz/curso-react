@@ -4,3 +4,51 @@ input {
 	-webkit-appearance: textfield !important;
 	-moz-appearance: textfield !important;
 }
+
+*{
+	margin: 0;
+}
+body {
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+	height: 100vh;
+}
+
+.flex{
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+main{
+    background-color: rgba(240, 248, 255, 0.493);
+	padding: 20px;
+	width: 600px;
+    border: 1px solid black;
+    border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+}
+#calculadora-form {
+	width: 75%;
+	padding: 5px;
+}
+#calculadora-button{
+	width: 25%;
+	padding: 5px;
+}
+.operando-contenedor {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+#resultado-contenedor {
+	width: 100%;
+}
+
+#operando-uno,
+#operando-dos{
+	width: 100%;
+	margin-bottom: 30px;
+}

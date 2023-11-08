@@ -15,12 +15,17 @@ function main() {
           const calcular = {
             numUno: Number(operandoUno.value),
             numDos: Number(operandoDos.value),
+            reset: function () {
+              operandoUno.value = ''
+              operandoDos.value = ''
+            },
             operacion: op.id
           }
           res(calcular)
         } else {
           const error = {
-            mensaje: 'llene los dos campos antes de realizar la operacion'
+            mensaje:
+              'Antes de realizar la operacion, rellene los dos campos porfavor.'
           }
           rej(error)
         }
@@ -28,11 +33,22 @@ function main() {
 
       calculo
         .then((valor) => {
-          const resultado = realizarOperacion(valor)
-          console.log(resultado)
+          const divResultado = document.getElementById('resultado-contenedor')
+          const resultado = realizarOperacion(valor) // <- Si se hace la division, deberia chequear si hay un error.
+          const displayResultado = displayOperacion(valor)
+          divResultado.innerHTML = `
+          <p class="alert alert-success">
+            ${displayResultado} ${resultado}
+          </p>`
+          valor.reset()
         })
         .catch((error) => {
-          console.error(error)
+          console.log(error)
+          const divResultado = document.getElementById('resultado-contenedor')
+          divResultado.innerHTML = `
+          <p class="alert alert-danger">
+            ${error.mensaje} 
+          </p>` // <- y mostrar el error en este evento. Pero sale undefined
         })
     }
   }
@@ -49,16 +65,45 @@ function main() {
         return a * b
       },
       division: function (a, b) {
-        return a / b
+        return chequearDivision(a, b)
       }
     }
 
     return operaciones[operacion](numUno, numDos)
   }
+  function displayOperacion({ operacion, numUno, numDos }) {
+    const display = {
+      suma: function (a, b) {
+        return `${a} + ${b} =`
+      },
+      resta: function (a, b) {
+        return `${a} - ${b} =`
+      },
+      multiplicacion: function (a, b) {
+        return `${a} * ${b} =`
+      },
+      division: function (a, b) {
+        return `${a} / ${b} =`
+      }
+    }
 
+    return display[operacion](numUno, numDos)
+  }
   // utilidades
   function chequearOperandos(opUno, opDos) {
     return opUno.value && opDos.value
+  }
+  function chequearDivision(numUno, numDos) {
+    const nan = numUno / numDos
+    const infinity = numUno / numDos
+    if (isNaN(nan) || infinity === Infinity) {
+      const error = {
+        mensaje: `No se puede realizar la operacion ${numUno}/${numDos}`
+      }
+      throw new Error(error)
+    } else {
+      return numUno / numDos
+    }
   }
   calculadora(suma)
   calculadora(resta)
