@@ -56,15 +56,15 @@ Ejemplo de `git commit`
 
 - Si tenemos cuenta en `Github`, creamos un repositorio remoto:
 
-![Alt text](image.png)
+![Alt text](./repo-remoto/image.png)
 
 - Creamos el titulo de nuestro Repo Remoto, seleccionamos el tipo de privacidad y creamos repositorio:
 
-![Alt text](image-1.png)
+![Alt text](./repo-remoto/image-1.png)
 
 - El mismo `Github` nos dice que hacer. Nos da instrucciones de como crear un repositorio local como vimos anteriormente y agregar el repositorio remoto. Y las otras instrucciones es directamente para agregar el repositorio remoto:
 
-![Alt text](image-2.png)
+![Alt text](./repo-remoto/image-2.png)
 
 - Para agregar nuestro repositorio remoto a nuestro repositorio local:
 
@@ -72,7 +72,7 @@ Ejemplo de `git commit`
 
 Ejemplo de `git remote`
 
-![Alt text](image-3.png)
+![Alt text](./repo-remoto/image-3.png)
 
 - Este paso es opcional pero es bueno saberlo. Si tu rama principal se llama `master`, le cambias el nombre a `main`:
 
@@ -82,7 +82,7 @@ Para verificar si tu rama principal se llama `main` o `master`, podes visualizar
 
 Ejemplo:
 
-![Alt text](image-4.png)
+![Alt text](./repo-remoto/image-4.png)
 
 En este ejemplo `main` es la rama principal al ser la unica que hay.
 
@@ -94,8 +94,8 @@ Si esta en verde y con un asterisco, significa que es la rama actual en la que t
 
 Ejemplo `git push`
 
-![Alt text](image-5.png)
+![Alt text](./repo-remoto/image-5.png)
 
 - Se actualiza nuestro repositorio remoto de `Github` una vez subido los cambios :
 
-![Alt text](image.png)
+![Alt text](./repo-remoto/image.png)
