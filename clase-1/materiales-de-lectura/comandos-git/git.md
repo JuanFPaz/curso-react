@@ -98,4 +98,4 @@ Ejemplo `git push`
 
 - Se actualiza nuestro repositorio remoto de `Github` una vez subido los cambios :
 
-![Alt text](./repo-remoto/image.png)
+![Alt text](./repo-remoto/image-6.png)
