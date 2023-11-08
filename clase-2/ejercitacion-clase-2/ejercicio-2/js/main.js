@@ -27,7 +27,7 @@ function main() {
             mensaje:
               'Antes de realizar la operacion, rellene los dos campos porfavor.'
           }
-          rej(error)
+          rej(new Error(error.mensaje))
         }
       })
 
@@ -35,19 +35,23 @@ function main() {
         .then((valor) => {
           const divResultado = document.getElementById('resultado-contenedor')
           const resultado = realizarOperacion(valor) // <- Si se hace la division, deberia chequear si hay un error.
-          const displayResultado = displayOperacion(valor)
-          divResultado.innerHTML = `
-          <p class="alert alert-success">
-            ${displayResultado} ${resultado}
-          </p>`
-          valor.reset()
+          if (resultado.estado) {
+            throw new Error(resultado.mensaje)
+          } else {
+            const displayResultado = displayOperacion(valor)
+            divResultado.innerHTML = `
+            <p class="alert alert-success">
+              ${displayResultado} ${resultado}
+            </p>`
+            valor.reset()
+          }
         })
         .catch((error) => {
-          console.log(error)
+          console.log(error.message)
           const divResultado = document.getElementById('resultado-contenedor')
           divResultado.innerHTML = `
           <p class="alert alert-danger">
-            ${error.mensaje} 
+            ${error.message} 
           </p>` // <- y mostrar el error en este evento. Pero sale undefined
         })
     }
@@ -68,7 +72,6 @@ function main() {
         return chequearDivision(a, b)
       }
     }
-
     return operaciones[operacion](numUno, numDos)
   }
   function displayOperacion({ operacion, numUno, numDos }) {
@@ -89,22 +92,24 @@ function main() {
 
     return display[operacion](numUno, numDos)
   }
-  // utilidades
-  function chequearOperandos(opUno, opDos) {
-    return opUno.value && opDos.value
-  }
   function chequearDivision(numUno, numDos) {
     const nan = numUno / numDos
     const infinity = numUno / numDos
     if (isNaN(nan) || infinity === Infinity) {
       const error = {
+        estado: true,
         mensaje: `No se puede realizar la operacion ${numUno}/${numDos}`
       }
-      throw new Error(error)
+      return error
     } else {
       return numUno / numDos
     }
   }
+  // utilidades
+  function chequearOperandos(opUno, opDos) {
+    return opUno.value && opDos.value
+  }
+
   calculadora(suma)
   calculadora(resta)
   calculadora(multiplicacion)
