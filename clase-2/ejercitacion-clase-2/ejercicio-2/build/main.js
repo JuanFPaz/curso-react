@@ -1,24 +1,3 @@
-/* eslint-disable no-void */
-/* eslint-disable eol-last */
-/* eslint-disable quote-props */
-/* eslint-disable semi-spacing */
-/* eslint-disable no-proto */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable new-cap */
-/* eslint-disable space-in-parens */
-/* eslint-disable curly */
-/* eslint-disable no-mixed-operators */
-/* eslint-disable dot-notation */
-/* eslint-disable no-sequences */
-/* eslint-disable eqeqeq */
-/* eslint-disable yoda */
-/* eslint-disable no-return-assign */
-/* eslint-disable no-func-assign */
-/* eslint-disable one-var */
-/* eslint-disable space-before-function-paren */
-/* eslint-disable no-var */
-/* eslint-disable quotes */
-/* eslint-disable semi */
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }

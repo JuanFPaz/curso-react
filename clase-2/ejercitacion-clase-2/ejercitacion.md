@@ -7,9 +7,9 @@
 Tengo desarrollada la siguiente función en javascript
 
 ```js
-function suma (a,b,callback){
-    let c = a +b;
-    callback( );
+function suma(a, b, callback) {
+  let c = a + b;
+  callback();
 }
 ```
 

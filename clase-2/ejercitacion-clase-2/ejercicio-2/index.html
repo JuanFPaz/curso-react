@@ -4,7 +4,8 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Ejercicio 2 - Calculadora Basica</title>
-		<script src="./build/main.js" defer></script>
+		<script src="./js/utilidades.js" defer></script>
+		<script src="./js/main.js" defer></script>
 		<link rel="stylesheet" href="./css/style.css" />
 	</head>
 
@@ -16,16 +17,12 @@
 					type="text"
 					name="operando-uno"
 					id="operando-uno"
-					onkeypress="return validaNumericos(event)"
 					required
 				/>
 				<input
 					type="text"
 					name="operando-dos"
 					id="operando-dos"
-					onkeypress="return validaNumericos(event)"
-					required
-					disabled
 				/>
 			</div>
 			<div class="resultado-contenedor">
@@ -33,9 +30,10 @@
 			</div>
 		</form>
 		<div class="operadores-contenedor">
-			<button id="suma" disabled>+</button><button id="resta" disabled>-</button
-			><button id="multiplicacion" disabled>x</button
-			><button id="division" disabled>%</button>
+			<button id="suma">+</button>
+			<button id="resta">-</button>
+			<button id="multiplicacion">x</button>
+			<button id="division">%</button>
 		</div>
 	</body>
 </html>

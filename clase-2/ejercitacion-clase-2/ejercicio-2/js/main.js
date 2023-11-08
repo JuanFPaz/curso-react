@@ -1,79 +1,69 @@
-/* eslint-disable no-unused-vars */
-function main () {
-  const operandoUno = document.getElementById('operando-uno')
-  const operandoDos = document.getElementById('operando-dos')
+function main() {
+  const suma = document.getElementById('suma')
+  const resta = document.getElementById('resta')
+  const multiplicacion = document.getElementById('multiplicacion')
+  const division = document.getElementById('division')
 
-  function obtenerResultado (evento) {
-    return new Promise((resolve) => {
-      const valor = evento.target.value
-      if (valor) {
-        resolve(Number(valor))
-      }
-    })
-  }
+  function calculadora(unOperador) {
+    const op = unOperador
+    const operandoUno = document.getElementById('operando-uno')
+    const operandoDos = document.getElementById('operando-dos')
 
-  operandoUno.addEventListener('input', (e) => {
-    obtenerResultado(e)
-      .then((valorUno) => {
-        console.log('Primer operando: ' + valorUno)
-        operandoDos.removeAttribute('disabled')
-        operandoDos.addEventListener('input', (e) => {
-          obtenerResultado(e)
-            .then((valorDos) => {
-              console.log('Segundo operando: ' + valorDos)
-              console.log(valorUno + valorDos)
-            })
-            .catch((error) => {
-              console.error(error)
-            })
+    op.onclick = () => {
+      const calculo = new Promise((res, rej) => {
+        if (chequearOperandos(operandoUno, operandoDos)) {
+          const calcular = {
+            numUno: Number(operandoUno.value),
+            numDos: Number(operandoDos.value),
+            operacion: op.id
+          }
+          res(calcular)
+        } else {
+          const error = {
+            mensaje: 'llene los dos campos antes de realizar la operacion'
+          }
+          rej(error)
+        }
+      })
+
+      calculo
+        .then((valor) => {
+          const resultado = realizarOperacion(valor)
+          console.log(resultado)
         })
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-  })
-}
-
-function validaNumericos (event) {
-  /* Este evento controla que solo se pueda ingresas numeros y un valor negativo en los input de los operando */
-  const input = event.target.value
-  // Permite solo números del 0 al 9 y un signo de menos al principio
-  if (
-    (event.charCode >= 48 && event.charCode <= 57) || (event.charCode === 45 && !input.includes('-'))
-  ) {
-    // Verifica si ya hay un signo de menos presente
-    if (event.charCode === 45 && input.includes('-')) {
-      // Evita agregar más signos de menos
-      event.preventDefault()
+        .catch((error) => {
+          console.error(error)
+        })
     }
-  } else {
-    // Evita otros caracteres
-    event.preventDefault()
   }
-}
-function resetForm () {
-  /* Funcion que se encarga de resetar el formulario cuando se recarga la pagina */
-  const form = document.getElementById('calculadora-form')
-  window.addEventListener('load', async () => {
-    await form.reset()
-  })
-}
-function controllWheel () {
-  /*
-        Funcion que se encarga de controlar el incrementro/decremento del input type=number
-        que viene por defecto
-    */
-  const operandoUno = document.getElementById('operando-uno')
-  const operandoDos = document.getElementById('operando-dos')
 
-  operandoUno.addEventListener('wheel', (e) => {
-    e.preventDefault()
-  })
-  operandoDos.addEventListener('wheel', (e) => {
-    e.preventDefault()
-  })
+  function realizarOperacion({ operacion, numUno, numDos }) {
+    const operaciones = {
+      suma: function (a, b) {
+        return a + b
+      },
+      resta: function (a, b) {
+        return a - b
+      },
+      multiplicacion: function (a, b) {
+        return a * b
+      },
+      division: function (a, b) {
+        return a / b
+      }
+    }
+
+    return operaciones[operacion](numUno, numDos)
+  }
+
+  // utilidades
+  function chequearOperandos(opUno, opDos) {
+    return opUno.value && opDos.value
+  }
+  calculadora(suma)
+  calculadora(resta)
+  calculadora(multiplicacion)
+  calculadora(division)
 }
 
 main()
-resetForm()
-controllWheel()
