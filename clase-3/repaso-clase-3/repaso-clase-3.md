@@ -8,52 +8,52 @@ Vamos a crear un directorio llamado `data` dentro del directorio `src`. Este dir
 
 ```js
 const pics = {
-    bakedSalmon: "src/assets/BakedSalmon.jpg",
-    fishTacos: "src/assets/FishTacos.jpg",
-  };
-  
-  const data = [
-    {
-      id: 1,
-      name: "Baked Salmon",
-      pic: pics.bakedSalmon,
-      ingredients: [
-        { name: "Salmon", amount: 1, measurement: "l lb" },
-        { name: "Pine Nuts", amount: 1, measurement: "cup" },
-        { name: "Butter Lettuce", amount: 2, measurement: "cups" },
-        { name: "Yellow Squash", amount: 1, measurement: "med" },
-        { name: "Olive Oil", amount: 0.5, measurement: "cup" },
-        { name: "Garlic", amount: 3, measurement: "cloves" },
-      ],
-      steps: [
-        "Preheat the oven to 350 degrees.",
-        "Spread the olive oil around a glass baking dish.",
-        "Add the yellow squash and place in the oven for 30 mins.",
-        "Add the salmon, garlic, and pine nuts to the dish.",
-        "Bake for 15 minutes.",
-        "Remove from oven. Add the lettuce and serve.",
-      ],
-    },
-    {
-      id: 2,
-      name: "Fish Tacos",
-      pic: pics.fishTacos,
-      ingredients: [
-        { name: "Whitefish", amount: 1, measurement: "l lb" },
-        { name: "Cheese", amount: 1, measurement: "cup" },
-        { name: "Iceberg Lettuce", amount: 2, measurement: "cups" },
-        { name: "Tomatoes", amount: 2, measurement: "large" },
-        { name: "Avocado", amount: 1, measurement: "large" },
-        { name: "Tortillas", amount: 3, measurement: "med" },
-      ],
-      steps: [
-        "Cook the fish on the grill until cooked through.",
-        "Place the fish on the 3 tortillas.",
-        "Top them with lettuce, tomatoes, avocado and cheese.",
-      ],
-    },
-  ];
-  export default data;
+  bakedSalmon: "src/assets/BakedSalmon.jpg",
+  fishTacos: "src/assets/FishTacos.jpg",
+};
+
+const data = [
+  {
+    id: 1,
+    name: "Baked Salmon",
+    pic: pics.bakedSalmon,
+    ingredients: [
+      { name: "Salmon", amount: 1, measurement: "l lb" },
+      { name: "Pine Nuts", amount: 1, measurement: "cup" },
+      { name: "Butter Lettuce", amount: 2, measurement: "cups" },
+      { name: "Yellow Squash", amount: 1, measurement: "med" },
+      { name: "Olive Oil", amount: 0.5, measurement: "cup" },
+      { name: "Garlic", amount: 3, measurement: "cloves" },
+    ],
+    steps: [
+      "Preheat the oven to 350 degrees.",
+      "Spread the olive oil around a glass baking dish.",
+      "Add the yellow squash and place in the oven for 30 mins.",
+      "Add the salmon, garlic, and pine nuts to the dish.",
+      "Bake for 15 minutes.",
+      "Remove from oven. Add the lettuce and serve.",
+    ],
+  },
+  {
+    id: 2,
+    name: "Fish Tacos",
+    pic: pics.fishTacos,
+    ingredients: [
+      { name: "Whitefish", amount: 1, measurement: "l lb" },
+      { name: "Cheese", amount: 1, measurement: "cup" },
+      { name: "Iceberg Lettuce", amount: 2, measurement: "cups" },
+      { name: "Tomatoes", amount: 2, measurement: "large" },
+      { name: "Avocado", amount: 1, measurement: "large" },
+      { name: "Tortillas", amount: 3, measurement: "med" },
+    ],
+    steps: [
+      "Cook the fish on the grill until cooked through.",
+      "Place the fish on the 3 tortillas.",
+      "Top them with lettuce, tomatoes, avocado and cheese.",
+    ],
+  },
+];
+export default data;
 ```
 
 Dentro de nuestro `App.jsx` importamos los datos para mostrar en lo que corresponde al dom de la `App`. Podemos corroborar los datos con un `console.log(data)`. Primero deberiamos ejecutar el entorno de desarrollo de nuestra `App` ejecutando el siguiente comando (En la terminal, tenemos que estar ubicados dentro de la carpeta donde tenemos nuestro `package.json` de nuestro proyecto creado):
@@ -65,19 +65,19 @@ La terminal nos va a brindar la `"url"` del servidor local: [http://localhost:51
 Ahora en nuestro archivo `App.jsx`, podemos comenzar a trabajar con los datos de las recetas:
 
 ```jsx
-import data from './data/data.js'
-import './App.css'
+import data from "./data/data.js";
+import "./App.css";
 
 function App() {
-  console.log(data)
+  console.log(data);
   return (
     <>
       <h1>Recetas</h1>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
 ```
 
 ## Mapeando los datos
@@ -85,19 +85,21 @@ export default App
 En este caso, vamos a usar `map()`, una de las funcioens de los arreglos para poder obtener en un nuevo arreglo, los ingredientes de la receta y mostrarlos en el DOM.
 
 ```jsx
-import data from './data/data.js'
-import './App.css'
+import data from "./data/data.js";
+import "./App.css";
 
 function App() {
   return (
     <>
       <h1>Recetas</h1>
-      {data.map(recipe =><h2>{recipe.name}</h2>)}
+      {data.map((recipe) => (
+        <h2>{recipe.name}</h2>
+      ))}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
 ```
 
 Lo malo de este metodo, es que nos va a salir un error. Este error nos solicita crear una `key` para los objetos que vamos a iterar.
@@ -107,16 +109,18 @@ Lo malo de este metodo, es que nos va a salir un error. Este error nos solicita 
 Para solucionar este problema, utilizamos los `id` de los objetos que estan en nuestro archivo `data.js`, y lo identificamos y referenciamos con una `key`, para recorrer cada dato:
 
 ```jsx
-import data from './data/data.js'
-import './App.css';
+import data from "./data/data.js";
+import "./App.css";
 
 function App() {
   return (
     <>
       <h1>Recetas</h1>
-      {data.map(recipe =><h2 key={recipe.id}>{recipe.name}</h2>)}
+      {data.map((recipe) => (
+        <h2 key={recipe.id}>{recipe.name}</h2>
+      ))}
     </>
-  )
+  );
 }
 ```
 
@@ -131,7 +135,7 @@ Despues creamos los contenedores que van a mostrar:
 ```jsx
 import data from './data/data.js'
 import './App.css';
- 
+
 function App() {
   return (
     <>
@@ -175,7 +179,7 @@ Vamos a agregar algo más de estilo al sitio, en el archivo `App.css` que viene 
   padding: 2rem;
   text-align: center;
 }
-.header{
+.header {
   text-align: center;
 }
 .container {
@@ -183,24 +187,23 @@ Vamos a agregar algo más de estilo al sitio, en el archivo `App.css` que viene 
   gap: 2rem;
   justify-content: center;
   flex-wrap: wrap;
-
 }
-.recipe{
+.recipe {
   width: max-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid white;
   border-radius: 5px;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
-.recipe h2{
+.recipe h2 {
   text-transform: uppercase;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
-.img-ingredients{
+.img-ingredients {
   display: flex;
   padding: 1rem 0;
   border: 1px solid;
@@ -208,18 +211,18 @@ Vamos a agregar algo más de estilo al sitio, en el archivo `App.css` que viene 
   border-bottom: 1px solid white;
 }
 
-.img{
+.img {
   border-radius: 5px;
   box-shadow: 2px 2px 6px;
 }
 
 .ingredients ul,
-.instructions ol{
+.instructions ol {
   padding: 0;
   list-style: none;
 }
 .ingredients li,
-.instructions li{
+.instructions li {
   padding-top: 5px;
 }
 ```
@@ -301,16 +304,18 @@ import "./App.css";
 function App() {
   return (
     <>
-      <h1>Recetas</h1>
+      <header>
+        <h1>Recetas</h1>
+      </header>
       <main className="container">
         {data.map((recipe) => (
-          <Recipe {...recipe} key={recipe.id}/>
+          <Recipe {...recipe} key={recipe.id} />
         ))}
       </main>
     </>
   );
 }
-
+ 
 export default App;
 ```
 
