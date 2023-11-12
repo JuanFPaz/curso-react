@@ -138,8 +138,6 @@ function InputState() {
         mensaje = e.target.value
     }
   return (
-    /*1:23*/
-    /* Quedamos minuto 1:26*/
     <div className="App">
       <form onSubmit={(e)=>{e.preventDefault()}}>
         <label htmlFor="searchBar">Busqueda:</label>
@@ -164,6 +162,7 @@ import { useState } from "react";
 
 function InputState() {
   //Ejemplo de Statefull:
+    console.log("Se renderiza el componente InputState con un estado")
   const [mensaje, setMensaje] = useState("");
 
   function obtenerDatos(e){
@@ -204,6 +203,69 @@ export default InputState;
 
 2. Podemos tener un estado para un solo componente (Input)
 
-- Para finalizar, vamos a ponerle `Bootstrap 5` a nuestros proyectos de react, leyendo la documetnacion de [react-bootstrap]()
+- Para finalizar, vamos a ponerle `Bootstrap 5` a nuestros proyectos de react, leyendo la documetnacion de [react-bootstrap](https://react-bootstrap.netlify.app/docs/getting-started/introduction/)
 
-- Pero voy a intentar yo primero, utilizando, la doc que nos da bootstrap ara instalarlo en vite?
+Para instalar `react-bootstrap`, escribimos en la terminal el siguiente comando:
+
+``` npm install react-bootstrap bootstrap ```
+
+Una vez instalado `Bootstrap` como dependencia, tenemos que importar la hoja de estilos en nuestro archivo `main.jsx`. Tambien podemos borrar nuestro `index.css`, y crear un estilo personalizado en `App.css`para nuestros componentes:
+
+```jsx
+//main.jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+```css
+/*App.css*/
+main{
+  background-color: #242424;
+  color: aliceblue;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.App{
+  background-color: rgba(240, 248, 255, 0.247);
+  width: 400px;
+  padding: 50px;
+  text-align: center;
+  margin-bottom: 10px;
+  border: 2px black solid;
+  border-radius: 10px;
+}
+```
+
+Agregamos un contenedor `main` en nuestro `App.jsx`
+
+```jsx
+import State from "./introduccion-state/State";
+import InputState from "./Input-state/InputState";
+import "./App.css";
+
+function App() {
+  //Ejemplo Statefull:
+  console.log("Se renderiza el componente App con un estado");
+  return (
+    <main>
+      <State></State>
+      <InputState></InputState>
+    </main>
+  );
+}
+
+export default App;
+```

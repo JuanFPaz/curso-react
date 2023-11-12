@@ -1,32 +1,35 @@
 import { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 
 function InputState() {
   //Ejemplo de Statefull:
   const [mensaje, setMensaje] = useState("");
-
-  function obtenerDatos(e){
-    setMensaje(e.target.value)
+  const [show, setShow] = useState(false)
+  function obtenerDatos(e) {
+    setMensaje(e.target.value);
+    setShow(true)
   }
 
   return (
-    /*1:23*/
-    /* Quedamos minuto 1:26*/
     <div className="App">
-      <form
+      <Form
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
-        <label htmlFor="searchBar">Busqueda:</label>
-        <input
+        <Form.Label htmlFor="searchBar">Busqueda:</Form.Label>
+        <Form.Control
           type="search"
           name="searchBar"
           id="searchBar"
           placeholder="Buscar..."
           onChange={obtenerDatos}
         />
-      </form>
-      <p>{mensaje}</p>
+      </Form>
+      <Alert className='mt-2' variant='dark' show={show}>
+        {mensaje}
+      </Alert>
     </div>
   );
 }

@@ -3,11 +3,13 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import { useState } from 'react'
-function Button({unEvento,unaAccion}){
+import Button from 'react-bootstrap/Button'
+
+function MyButton({unEvento,unaAccion}){
   console.log(`Se renderiza el componente del button ${unaAccion}`)
   return(
     <>
-      <button onClick={unEvento}> {unaAccion} </button>
+      <Button variant="dark" onClick={unEvento}> {unaAccion} </Button>
     </>
   )
 }
@@ -31,8 +33,8 @@ function State() {
       <div className='App'>
         <h1>Estados en React</h1>
         <p>{num}</p>
-        <Button unEvento={incrementar} unaAccion="Incrementar"></Button>
-        <Button unEvento={decrementar} unaAccion="Decrementar"></Button>
+        <MyButton unEvento={incrementar} unaAccion="Incrementar"></MyButton>
+        <MyButton unEvento={decrementar} unaAccion="Decrementar"></MyButton>
       </div>
     </>
   )
