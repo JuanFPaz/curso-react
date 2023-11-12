@@ -5,60 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Tienda Online</title>
     <style>
-        body {
-            background-color: #1f1f1f; /* Fondo oscuro */
-            color: #fff; /* Texto en color claro */
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        header {
-            background-color: #333;
-            padding: 10px;
-            text-align: center;
-        }
-
-        header input {
-            padding: 8px;
-            width: 200px;
-        }
-
-        .product-card {
-            width: 300px;
-            margin: 20px auto;
-            background-color: #333;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-
-        .product-details {
-            text-align: center;
-        }
-
-        .product-price {
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-
-        .product-sku {
-            color: #888;
-            margin-top: 5px;
-        }
-
-        .availability {
-            margin-top: 10px;
-            color: #4CAF50; /* Verde para indicar disponibilidad */
-        }
     </style>
 </head>
 <body>
@@ -67,7 +14,9 @@
         <input type="text" placeholder="Buscar..." id="search-input">
     </header>
 
-    <div class="product-card">
+    <div id="App"></div>
+    <!-- Este era el primer div de ejemplo.-->
+    <!-- <div class="product-card">
         <img src="imagen_producto.jpg" alt="Producto">
         <div class="product-details">
             <h2>Nombre del Producto</h2>
@@ -75,8 +24,8 @@
             <div class="product-price">$19.99</div>
             <div class="product-sku">SKU: ABC123</div>
             <div class="availability">Disponible: 10 unidades</div>
-        </div>
+        </div> -->
     </div>
-
+    <script src="./js/main.js"></script>
 </body>
 </html>
