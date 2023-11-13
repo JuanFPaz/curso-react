@@ -66,6 +66,7 @@ function AppDom() {
 
     productoCard.setAttribute("class", "product-card");
     imageProducto.setAttribute("src", foto);
+    detallesProducto.setAttribute("class","product-details");
     precioProducto.setAttribute("class","product-price");
     skuProducto.setAttribute("class","product-sku");
     cantidadProducto.setAttribute("class","availability");
@@ -76,6 +77,7 @@ function AppDom() {
     cantidadProducto.innerHTML = `Disponible: ${cantidad} unidades`;
     detallesProducto.appendChild(titutloProducto);
     detallesProducto.appendChild(skuProducto);
+    detallesProducto.appendChild(precioProducto);
     detallesProducto.appendChild(descripcionProducto);
     detallesProducto.appendChild(cantidadProducto);
     productoCard.appendChild(imageProducto);
