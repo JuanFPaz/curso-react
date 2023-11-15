@@ -84,6 +84,7 @@ function AppDom() {
     productoCard.appendChild(detallesProducto);
     unDiv.appendChild(productoCard);
   }
+
   data().then((data) => {
     const tituloSeccion = data.seccion;
     const productos = data.productos;

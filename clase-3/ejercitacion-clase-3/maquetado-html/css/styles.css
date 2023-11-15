@@ -1,51 +1,51 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 body {
-    background-color: #1f1f1f; /* Fondo oscuro */
-    color: #fff; /* Texto en color claro */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  background-color: #1f1f1f; /* Fondo oscuro */
+  color: #fff; /* Texto en color claro */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 header {
-    background-color: #333;
-    padding: 10px;
-    text-align: center;
+  background-color: #333;
+  padding: 10px;
+  text-align: center;
 }
 
 header input {
-    padding: 8px;
-    width: 200px;
+  padding: 8px;
+  width: 200px;
 }
 
-.container{
-    display: flex ;
-    flex-direction: row ;
+.container {
+  display: flex;
+  flex-direction: row;
 }
-aside{
-    width: 20%;
-    margin: 0 10px 0 10px;
+aside {
+  width: 20%;
+  margin: 0 10px 0 10px;
 }
-main{
-    width: 80%;
-    margin: 0 10px 0 10px;
+main {
+  width: 80%;
+  margin: 0 10px 0 10px;
 }
-#App{
-    display: flex;
-    flex-direction: column;
+#App {
+  display: flex;
+  flex-direction: column;
 }
-#Aside-App{
-    display: flex;
-    flex-direction: column;
+#Aside-App {
+  display: flex;
+  flex-direction: column;
 }
 
-.product-card {
+.categorias-list{
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 20px auto;
     background-color: #333;
     padding: 20px;
@@ -53,29 +53,40 @@ main{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.product-card {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 20px auto;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .product-card img {
-    display: block;
-    width: 250px;
-    height: 250px;
-    border-radius: 4px;
-    margin-bottom: 10px;
+  display: block;
+  width: 250px;
+  height: 250px;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
 .product-details {
-    padding: 20px;
+  padding: 20px;
 }
 
 .product-price {
-    font-size: 1.2em;
-    margin-top: 10px;
+  font-size: 1.2em;
+  margin-top: 10px;
 }
 
 .product-sku {
-    color: #888;
-    margin-top: 5px;
+  color: #888;
+  margin-top: 5px;
 }
 
 .availability {
-    margin-top: 10px;
-    color: #4CAF50; /* Verde para indicar disponibilidad */
+  margin-top: 10px;
+  color: #4caf50; /* Verde para indicar disponibilidad */
 }

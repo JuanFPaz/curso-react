@@ -7,7 +7,7 @@ function Album({ artista, nombre, precio, SKU, cantidad, descripcion, foto }) {
   return (
     <>
       <div className="product-card">
-        <img src={foto} alt={`${artista} - ${nombre}`} />
+        <img src={foto} alt={`${artista} - ${nombre}`} onClick={()=>{console.log('hola')}}/>
         <div className="product-details">
           <h2>
             {artista} - {nombre}
@@ -19,6 +19,14 @@ function Album({ artista, nombre, precio, SKU, cantidad, descripcion, foto }) {
         </div>
       </div>
     </>
+  );
+}
+
+function Spinner() {
+  return (
+    <div className="overlay">
+      <div className="spinner"></div>
+    </div>
   );
 }
 
@@ -35,7 +43,12 @@ function App() {
   return (
     <>
       <header>
-        <input type="text" placeholder="Buscar..." id="search-input" />
+        <div className="titulo">
+          <h1>Tienda de Rock - Peperina</h1>
+        </div>
+        <form>
+          <input type="text" placeholder="Buscar..." id="search-input" />
+        </form>
       </header>
       <div className="container">
         <aside>
@@ -44,13 +57,11 @@ function App() {
         <main>
           <div id="App">
             {cargando ? (
-              <p>Cargando...</p>
-            ) : productos ? (
+              <Spinner></Spinner>
+            ) : (
               productos.map((producto) => (
                 <Album key={producto.id} {...producto} />
               ))
-            ) : (
-              <p>No hay productos disponibles.</p>
             )}
           </div>
         </main>

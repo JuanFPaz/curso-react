@@ -392,7 +392,7 @@ const promesaSobreElBidet = new Promise((res,rej)=>{
             totalCanciones: 10,
             año: 1984,
         };
-        if(forzarError(0)){
+        if(forzarError(10)){ //<-- Modifica ese valor a 10 para evitar el error
             rej("No se pudo obtener el resultado porque forzamos el error.");
         }else{
             res(pianoBar);
@@ -428,3 +428,5 @@ promesaSobreElBidet.then((resultado)=>{
 
 El codigo consumidor, solamente va a estar esperando que se resuelva la promesa, y a traves del `then`, vamos a manipular el resultado obtenido, para mostrar los datos del objeto.
 Y si forzamos el error en el codigo productor, se ejecutara la funcion `catch`.
+
+## Async/Await
