@@ -14,8 +14,7 @@ function Albumnes({
   precio,
   SKU,
   cantidad,
-  descripcion,
-  ...asdasd
+  descripcion
 }) {
   console.log(`Artista: ${artista}`);
   console.log(" ");
