@@ -38,11 +38,11 @@ aside{
   width: 20%;
   margin: 0 10px 0 10px;
 }
-main{
+section{
   width: 80%;
   margin: 0 10px 0 10px;
 }
-#App{
+#Section-App{
   display: flex;
   flex-direction: column;
 }

@@ -171,15 +171,15 @@ const json = {
 
 const productos = json.productos;
 
-const dato = {pro: 'Talent/Microfón'}
+const dato = { pro: "Talent/Microfón" };
 
-function mostrarPorDiscografica(unDato){
-  const asd = productos.filter((p)=> p.discografica === unDato)
-  return asd
+function mostrarPorDiscografica(unDato) {
+  const asd = productos.filter((p) => p.discografica === unDato);
+  return asd;
 }
 
-console.log(mostrarPorDiscografica(dato.pro))
-console.log(mostrarPorDiscografica(dato.pro))
+console.log(mostrarPorDiscografica(dato.pro));
+console.log(mostrarPorDiscografica(dato.pro));
 
 // function Categorias(productos) {
 //   console.log("Categorias:");
@@ -193,35 +193,33 @@ console.log(mostrarPorDiscografica(dato.pro))
 //   console.log(DiscograficaFiltrada);
 // }
 
-function filtrarObjeto(productos, clave) {
-  const cantidadPorProductos = {};
+// function filtrarObjeto(productos, clave) {
+//   const cantidadPorProductos = {};
 
-  // Iteramos sobre los productos para contar la cantidad por discográfica
-  productos.forEach((producto) => {
-    const discografica = producto[clave];
-    // Si ya existe la discográfica en el objeto, incrementamos la cantidad
-    if (cantidadPorProductos[discografica]) {
-      cantidadPorProductos[discografica]++;
-    } else {
-      // Si no existe, inicializamos la cantidad en 1
-      cantidadPorProductos[discografica] = 1;
-    }
-  });
-  // Mapeamos el objeto a un arreglo de objetos con la estructura deseada
-  const products = Object.keys(cantidadPorProductos).map(
-    (pro) => {
-      return {
-        pro,
-        cantidad: cantidadPorProductos[pro],
-      };
-    }
-  );
+//   // Iteramos sobre los productos para contar la cantidad por discográfica
+//   productos.forEach((producto) => {
+//     const discografica = producto[clave];
+//     // Si ya existe la discográfica en el objeto, incrementamos la cantidad
+//     if (cantidadPorProductos[discografica]) {
+//       cantidadPorProductos[discografica]++;
+//     } else {
+//       // Si no existe, inicializamos la cantidad en 1
+//       cantidadPorProductos[discografica] = 1;
+//     }
+//   });
+//   // Mapeamos el objeto a un arreglo de objetos con la estructura deseada
+//   const products = Object.keys(cantidadPorProductos).map((pro) => {
+//     return {
+//       pro,
+//       cantidad: cantidadPorProductos[pro],
+//     };
+//   });
 
-  const ProductsSort = products.sort((d, dd)=> dd.cantidad - d.cantidad )
-  return ProductsSort
-}
-filtrarObjeto(productos, "discografica");
-filtrarObjeto(productos, "artista");
+//   const ProductsSort = products.sort((d, dd) => dd.cantidad - d.cantidad);
+//   return ProductsSort;
+// }
+// filtrarObjeto(productos, "discografica");
+// filtrarObjeto(productos, "artista");
 
 // function Categorias(productos) {
 //   console.log("Categorias:");
@@ -274,4 +272,32 @@ filtrarObjeto(productos, "artista");
 //     console.log(`${artista} (${artistas[artista]})`);
 //   }
 
+function filtrarObjeto(productos, clave) {
+  const cantidadPorProductos = {};
 
+  productos.forEach((producto) => {
+    const discografica = producto[clave];
+
+    if (cantidadPorProductos[discografica]) {
+      cantidadPorProductos[discografica]++;
+    } else {
+      cantidadPorProductos[discografica] = 1;
+    }
+  });
+
+  console.log(Object.keys(cantidadPorProductos));
+
+  const Productos = Object.keys(cantidadPorProductos)
+    .map((pro) => {
+      return {
+        productos: pro,
+        cantidad: cantidadPorProductos[pro],
+      };
+    })
+    .sort((p, pp) => pp.cantidad - p.cantidad);
+
+  return Productos
+}
+
+filtrarObjeto(productos, "discografica");
+filtrarObjeto(productos, "artista");
