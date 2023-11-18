@@ -2,8 +2,8 @@
   box-sizing: border-box;
 }
 body {
-  background-color: #1f1f1f; /* Fondo oscuro */
-  color: #fff; /* Texto en color claro */
+  background-color: #1f1f1f;
+  color: #fff;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -116,7 +116,7 @@ li{
 
 .availability {
   margin-top: 10px;
-  color: #4CAF50; /* Verde para indicar disponibilidad */
+  color: #4CAF50;
 }
 
 .overlay {
