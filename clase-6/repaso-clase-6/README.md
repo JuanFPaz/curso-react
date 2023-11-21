@@ -1,5 +1,3 @@
 # Repaso Clase 6
 
-Para borrar un elemento usamos filter :o
-
-Completar despues :D
+[Ver clase 6 grabada]()
