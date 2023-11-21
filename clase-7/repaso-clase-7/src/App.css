@@ -1,0 +1,9 @@
+.icons:hover {
+  cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: lightblue;
+
+}
