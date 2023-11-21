@@ -1,6 +1,6 @@
 import filtrarObjetoPor from "../../../utilities/filtrarObjeto.js";
 
-function Categorias({ productos, onMostrarTodos ,onMostrarPor }) {
+function Categorias({ productos, onMostrarTodos, onMostrarPor }) {
   const discograficas = filtrarObjetoPor(productos, "discografica");
   const artistas = filtrarObjetoPor(productos, "artista");
 
@@ -10,7 +10,9 @@ function Categorias({ productos, onMostrarTodos ,onMostrarPor }) {
         <h1>Categorias:</h1>
         <h2>Seccion</h2>
         <ul>
-          <li onClick={onMostrarTodos}className="Miau">Rock Nacional ({productos.length})</li>
+          <li onClick={onMostrarTodos} className="Miau">
+            Rock Nacional ({productos.length})
+          </li>
         </ul>
         <h2>Discograficas</h2>
         <ul>

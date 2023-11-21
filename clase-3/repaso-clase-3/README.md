@@ -1,6 +1,4 @@
-# Repaso Clase 3
-
-# Repaso clase 2
+# Repaso clase 3
 
 Vamos a ver como crear una pequeña app para continuar con ek concepto de `componentes` en **ReactJS**.
 

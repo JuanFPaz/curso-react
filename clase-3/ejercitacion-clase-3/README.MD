@@ -68,4 +68,4 @@ function Main() {
 
 2. Los datos ahora toman dos caminos diferentes. El estado `productos` originales, lo recibe el componente `Catergorias`, para poder realizar el listado de `ocurrencias` mencionados anteriormente, filtrando del estado original las `discograficas` y `artistas`. Pero ademas de recibir el estado original, tambien recibe dos funciones para cambiar el estado de la copia de los productos, cuando se ejecuta el evento `onClick` en cada una de los items de la lista de ocurrencias.
 
-3. Al componente `Album`, le enviamos la copia del estado `productos`. Lo que nos permite tener mayor flexibilidad, al momento de renderizar todo los productos al inicio, y que ademas, vamos a poder renderizar los productos filtrados en la lista de ocurrencias.
+3. Al componente `Album`, le enviamos la copia del estado `productos`. Lo que nos permite tener mayor flexibilidad, al momento de renderizar todo los productos al inicio, y que ademas, vamos a poder renderizar los productos filtrados en la lista de ocurrencias, del componente `Categorias`.
