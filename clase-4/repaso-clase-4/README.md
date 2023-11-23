@@ -10,15 +10,15 @@ En esta nueva clase, vamos a repasar lo que vimos en la [Clase 3](../../clase-3/
 
 - Minuto 34:45: Ejemplo en Stateless en react
 
-![Alt text](image.png)
+![Alt text](./images/image.png)
 
 - Minuto 36 a 38: Ejemplo de statefull
 
-![Alt text](image-1.png)
+![Alt text](./images/image-1.png)
 
 - Minuto 39: El componente que detecta el cambio en state, se renderizara.
 
-![Alt text](image-2.png)
+![Alt text](./images/image-2.png)
 
 - Crear un proyecto de react en el mismo directorio actual:
 
@@ -26,7 +26,7 @@ En esta nueva clase, vamos a repasar lo que vimos en la [Clase 3](../../clase-3/
 
 - Ejemplo de stateless min 52
 
-![Alt text](image-3.png)
+![Alt text](./images/image-3.png)
 
 ```jsx
 import './App.css'
@@ -55,9 +55,9 @@ export default App
 
 - Introducion a Hooks, son funciones que nos permiten manejar estados en react. EL más popular es `useState` Min 52 - 55
 
-- Importar `{useStaet}` Min 55
+- Importar `{useState}` Min 55
 
-![Alt text](image-4.png)
+![Alt text](./images/image-4.png)
 
 ```jsx
 import { useState } from 'react'
@@ -134,7 +134,7 @@ function App(){
 function InputState() {
     //Ejemplo de Stateless:
     let mensaje = ""
-    function mostrarDatos(e){
+    function obtenerDatos(e){
         mensaje = e.target.value
     }
   return (
@@ -146,7 +146,7 @@ function InputState() {
           name="searchBar"
           id="searchBar"
           placeholder="Buscar..."
-          onChange={mostrarDatos}
+          onChange={obtenerDatos}
         />
       </form>
       <p>{mensaje}</p>
@@ -209,63 +209,69 @@ Para instalar `react-bootstrap`, escribimos en la terminal el siguiente comando:
 
 ``` npm install react-bootstrap bootstrap ```
 
-Una vez instalado `Bootstrap` como dependencia, tenemos que importar la hoja de estilos en nuestro archivo `main.jsx`. Tambien podemos borrar nuestro `index.css`, y crear un estilo personalizado en `App.css`para nuestros componentes:
+Una vez instalado `Bootstrap` como dependencia, tenemos que importar la hoja de estilos en nuestro archivo `App.jsx`. Recomiendo borrar las hojas de estilo pretedeterminadas de `React`, para tener una mejor experiencia probando `React-bootstrap`. De todas formas, podemso volver a agregar estilo más adelante, pero por ahora probaremos la libreria de bootstrap.
 
 ```jsx
 //main.jsx
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import "bootstrap/dist/css/bootstrap.min.css";
+import State from './introduccion-state/State'
+import InputState from './Input-state/InputState'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-```
-
-```css
-/*App.css*/
-main{
-  background-color: #242424;
-  color: aliceblue;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-.App{
-  background-color: rgba(240, 248, 255, 0.247);
-  width: 400px;
-  padding: 50px;
-  text-align: center;
-  margin-bottom: 10px;
-  border: 2px black solid;
-  border-radius: 10px;
-}
-```
-
-Agregamos un contenedor `main` en nuestro `App.jsx`
-
-```jsx
-import State from "./introduccion-state/State";
-import InputState from "./Input-state/InputState";
-import "./App.css";
-
-function App() {
-  //Ejemplo Statefull:
-  console.log("Se renderiza el componente App con un estado");
+function App () {
+  console.log('Se renderiza el componente App con un estado')
   return (
     <main>
-      <State></State>
-      <InputState></InputState>
+      <State />
+      <InputState />
     </main>
-  );
+  )
 }
 
-export default App;
+export default App
 ```
+
+Al importar directamente desde la libreria descargada de `React-bootstrap`, ya no tenenmos la necesidad de insertar el link del CDN que soliamos usar en el HTML. Y con el `Javascript` ocurre algo similar, pero solamente tenemos que importar los componentes de `Bootstrap` que querramos utilizar, tal cual como nos indica en el manual de [React Bootstrap](https://react-bootstrap.netlify.app/docs/getting-started/introduction/).
+
+Vamos a modificar el formulario que creamos recien para darle estilo
+
+```jsx
+import { useState } from 'react'
+import Form from 'react-bootstrap/Form'
+import Alert from 'react-bootstrap/Alert'
+
+function InputState () {
+  const [mensaje, setMensaje] = useState('')
+  const [show, setShow] = useState(false)
+  function obtenerDatos (e) {
+    setMensaje(e.target.value)
+    setShow(true)
+  }
+
+  return (
+    <div className='App'>
+      <Form
+        onSubmit={(e) => {
+          e.preventDefault()
+        }}
+      >
+        <Form.Label htmlFor='searchBar'>Busqueda:</Form.Label>
+        <Form.Control
+          required
+          type='search'
+          name='searchBar'
+          id='searchBar'
+          placeholder='Buscar...'
+          onChange={obtenerDatos}
+        />
+      </Form>
+      <Alert className='mt-2' variant='light' show={show}>
+        {mensaje}
+      </Alert>
+    </div>
+  )
+}
+
+export default InputState
+```
+
+Importamos 2 componentes de Bootstrap, el componente `Form` y el componente `Alert`. A nuestro Formulario, debemos cambiarle las etiquetas, anteriomente, aunque no se note, el formulario tenia una etiqueta `form` (en minusculas). Con el componente de `Bootstrap`, nuestro formulario, va a tomar el estilo predeterminado de `Bootstrap`, ademas tambien tenemos que agregarselo al `label` y al `input`, donde este ultimo, ya no se llama input, sino que ahroa se llama `Form.Control`. Todo esto, esta en la documentacion de `React-Bootstrap`.

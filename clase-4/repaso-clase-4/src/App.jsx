@@ -1,16 +1,15 @@
-// import State from "./introduccion-state/State";
-// import InputState from "./Input-state/InputState";
-import "./App.css";
-import RepasoClases from "./repaso-clase-5";
+import State from './introduccion-state/State'
+import InputState from './Input-state/InputState'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-function App() {
-  //Ejemplo Statefull:
-  console.log("Se renderiza el componente App con un estado");
+function App () {
+  console.log('Se renderiza el componente App con un estado')
   return (
     <main>
-      <RepasoClases></RepasoClases>
+      <State />
+      <InputState />
     </main>
-  );
+  )
 }
 
-export default App;
+export default App
